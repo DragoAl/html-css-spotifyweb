@@ -26,13 +26,16 @@ body{
     
 }
 
-#logo img{
+.full-logo{
     height: 40px;
+}
+.hidden{
+    display: none;
 }
 #side-nav nav{
     /* max-height:130px; */
     margin-bottom: 10px;
-    background-color: turquoise;
+    /* background-color: turquoise; */
 }
 #side-nav nav img{
     height: 26px;
@@ -70,9 +73,8 @@ body{
 
 
 #playlist{
-   /* max-height: 400px; */
   
-   background-color: yellow;
+   /* background-color: yellow; */
 }
 
 #playlist h5{
@@ -110,16 +112,16 @@ body{
 }
 .playlist-name{
    /* max-height:100%; */
-    /* height: 100%; */
+    max-height: 200px;
     
-    overflow: scroll;
+    overflow: auto;
     /* min-height: 30%;
     z-index: 20;
     position: relative; */
     
 }
 #side-bottom{
-    background-color: violet;
+    /* background-color: violet; */
     
     /* max-height:150px ; */
     /* margin-top: 50px; */
@@ -253,7 +255,7 @@ body{
 }
 
 .music-item{
-    min-width: 120px;
+    min-width: 100px;
     width: calc(100% / 6);
     color: #64676c;
     text-align: center;
@@ -263,7 +265,7 @@ body{
     
 
 .music-item img{
-    min-width: 120px;
+    min-width: 100px;
     width: 100%;
     padding-right: 10px;
     
@@ -292,15 +294,18 @@ body{
     width: 18%;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     
 }
 .song-info{
     display: flex;
     align-items: center;
+   
     
 }
 .song-info img{
-    width: 30%;
+    max-width: 30%;
+    min-width: 40px;
     margin: 0 10px;
 }
 .song-title{
@@ -319,7 +324,10 @@ body{
     font-weight: 600;
     
 }
-.icons{
+.song-icon {
+    display: flex;
+}
+.icons, .song-icon a{
     display: inline-block;
 }
 .icons .fa-heart, .fa-folder, .fa-list,
@@ -330,14 +338,15 @@ body{
     
 }
 #player-bar{
-    width: 40%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    margin: 0 3px;
 }
 #player-bar div{
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .icons .player-icons {
@@ -351,7 +360,8 @@ body{
     font-size: 28px;
 }
 .time-bar ,.time-bar-selected{
-    width: 500px;
+    
+    width: 100%;
     height: 4px;
     border-radius: 25px;
     background-color: #5a5a5a;
@@ -379,7 +389,7 @@ body{
 
 }
 .volume-bar , .volume-selected{
-    width: 150px;
+    width: 70px;
     height: 4px;
     border-radius: 25px;
     background-color: #5a5a5a;
@@ -411,4 +421,106 @@ body{
 }
 .icons i:hover{
     color: white;
+}
+/* mediaquery md */
+@media all and (max-width:878px) {
+    .music-item{
+        /* min-width: 100px; */
+        width: calc(100% / 4);
+        color: #64676c;
+        margin-bottom: 10px;
+    }
+    .container-items{
+        flex-wrap: wrap;
+    }
+    .icons .fa-heart, .fa-folder{
+        display: block;
+    }
+    .song-icon{
+        display: block;
+    }
+
+
+    
+}
+/* mediaquery s */
+@media all and (max-width:639px) {
+    .music-item{
+        /* min-width: 100px; */
+        width: calc(100% / 2);
+        color: #64676c;
+        margin-bottom: 10px;
+    }
+    .container-items{
+        flex-wrap: wrap;
+    }
+    .center-nav{
+        margin:110px 5px 40px ;
+        text-align: center;
+        
+    }
+    .center-nav ul li{
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+    .center-nav a{
+        font-size: 14px;
+        color: #74767b;
+   }
+   .fa-list{
+       display: none;
+   }
+   
+
+
+    
+}
+/* mediaquery xs */
+@media all and (max-width:552px) {
+    .music-item{
+        /* min-width: 100px; */
+        width: calc(100% / 2);
+        color: #64676c;
+        margin-bottom: 10px;
+    }
+    .container-items{
+        flex-wrap: wrap;
+    }
+    .center-nav{
+        margin:110px 5px 40px ;
+        text-align: center;
+        
+    }
+    .center-nav ul li{
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+    .center-nav a{
+        font-size: 14px;
+        color: #74767b;
+   }
+    #side-nav{
+        width: 50px;
+        padding: 10px 10px 0;
+    
+    
+    }
+    #music-container{
+        width: calc(100% - 50px);
+    }
+    .upgrade{
+        width:calc(100% - 50px);
+
+    }
+    .full-logo{
+        display: none;
+    }
+    .hidden{
+        display: inline;
+        height: 30px;
+    }
+   
+
+
+    
 }
