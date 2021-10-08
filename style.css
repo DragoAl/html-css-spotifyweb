@@ -261,6 +261,20 @@ body{
     text-align: center;
     font-size: 12px;
     font-weight: 600;
+
+}
+.album-logo{
+    position: relative;
+    display: none;
+}
+.music-item .fa-play-circle{
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
     
 
@@ -268,6 +282,7 @@ body{
     min-width: 100px;
     width: 100%;
     padding-right: 10px;
+
     
 }
 .music-item h4{
@@ -291,10 +306,9 @@ body{
     z-index: 999; */
 }
 #song{
-    width: 18%;
+    /* width: 18%; */
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     
 }
 .song-info{
@@ -304,8 +318,8 @@ body{
     
 }
 .song-info img{
-    max-width: 30%;
-    min-width: 40px;
+    max-width: 60px;
+    min-width: 30px;
     margin: 0 10px;
 }
 .song-title{
@@ -325,9 +339,11 @@ body{
     
 }
 .song-icon {
-    display: flex;
+    display: inline-block;
+    padding-left: 10px;
+
 }
-.icons, .song-icon a{
+.icons{
     display: inline-block;
 }
 .icons .fa-heart, .fa-folder, .fa-list,
@@ -338,16 +354,19 @@ body{
     
 }
 #player-bar{
-    width: 30%;
+    /* width: 50%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 3px;
 }
-#player-bar div{
-    margin-bottom: 10px;
-    text-align: center;
+.player-icons-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
 }
+
 
 .icons .player-icons {
     color:white ;
@@ -361,20 +380,38 @@ body{
 }
 .time-bar ,.time-bar-selected{
     
-    width: 100%;
+    width: 30vw;
     height: 4px;
     border-radius: 25px;
     background-color: #5a5a5a;
     margin: 0 20px;
+    position: relative;
+}
+
+
+.pointer-circle{
+    color: lightgrey;
+    font-size: 12px;
+    position: absolute;
+    top: -115%;
+    left: 20%;
+    display: none;
+    
+}
+.time-progress{
+    position: absolute;
+    top:-115%;
+    left:30%;
 }
 .time-bar-selected{
     width: 30%;
     margin: 0;
-    background-color: yellow;
+    background-color: #c1c1c1;
 }
 .container-timebar{
     display: flex;
     align-items:center;
+    position: relative;
 
 }
 .container-timebar span{
@@ -393,12 +430,13 @@ body{
     height: 4px;
     border-radius: 25px;
     background-color: #5a5a5a;
-    margin: 0 20px;
+    margin: 0 10px;
+    position: relative;
 
 }
 .volume-selected{
     width: 20%;
-    background-color: yellow;
+    background-color: #c1c1c1;
     margin: 0;
 }
 /* hover */
@@ -422,6 +460,34 @@ body{
 .icons i:hover{
     color: white;
 }
+.player-icons:hover{
+    font-size: 20px;
+}
+.icons .fa-play-circle:hover{
+    font-size: 32px;
+}
+
+.music-item:hover .fa-play-circle, .album-logo {
+    display: block;
+}
+.music-item:hover img{
+    filter:opacity(0.6);
+}
+#upgrade-button:hover{
+ 
+    padding: 16px 34px;
+    font-size: 14px;
+
+}
+.time-bar:hover .time-bar-selected, .volume-bar:hover .volume-selected{
+    background-color: yellowgreen;
+   
+}
+.time-bar:hover .pointer-circle ,.volume-bar:hover .pointer-circle {
+    display:inline-block;
+}
+
+
 /* mediaquery md */
 @media all and (max-width:878px) {
     .music-item{
@@ -433,12 +499,16 @@ body{
     .container-items{
         flex-wrap: wrap;
     }
-    .icons .fa-heart, .fa-folder{
-        display: block;
-    }
+   
     .song-icon{
-        display: block;
+        display: block
     }
+    .song-info img{
+        width: 50px;
+        
+    }
+
+   
 
 
     
@@ -470,6 +540,32 @@ body{
    .fa-list{
        display: none;
    }
+    .song-info img{
+        width: 40px;
+        
+    }
+    .song-title h5{
+        font-size: 12px;
+    }
+    .song-title .artist{
+        font-size: 10px;
+        
+    }
+    .icons .player-icons {
+        font-size: 14px;
+            
+    }
+    .icons .fa-play-circle{
+        font-size: 22px;
+    }
+    .icons .fa-heart, .fa-folder, .fa-list, .fa-desktop, .fa-volume-up{
+        font-size: 14px;
+    }
+    .icons .fa-heart, .fa-folder, .fa-list, .fa-desktop, .fa-volume-up{
+        margin-left: 5px;
+    }
+    
+   
    
 
 
@@ -496,29 +592,45 @@ body{
         padding-bottom: 10px;
     }
     .center-nav a{
-        font-size: 14px;
+        font-size: 12px;
         color: #74767b;
    }
     #side-nav{
         width: 50px;
         padding: 10px 10px 0;
-    
-    
     }
     #music-container{
         width: calc(100% - 50px);
     }
     .upgrade{
         width:calc(100% - 50px);
-
     }
-    .full-logo{
-        display: none;
-    }
+  
     .hidden{
         display: inline;
         height: 30px;
     }
+    .selected::before{
+        width: 0px;
+    }
+    #side-nav span, hr, #playlist,.full-logo{
+        display: none;
+    }
+   .app-install i{
+       margin-left: 6px;
+   }
+    .song-info img{
+        width: 30px;
+    
+    }
+    .song-title h5{
+        font-size: 10px;
+    }
+    .song-title .artist{
+        font-size: 8px;
+        
+    }
+   
    
 
 
